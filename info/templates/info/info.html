@@ -1,0 +1,218 @@
+{% extends 'home/index.html' %}
+{% block title %} Ajarani |  {{data.name}} {% endblock %}
+ {% block random %}
+                {% for random_search in random_search %}
+              <a class="mdl-navigation__link" href="{% url 'anime_info' id_anime=random_search.id %}">
+                <?xml version="1.0" encoding="iso-8859-1"?>
+                <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 286.374 286.374" style="enable-background:new 0 0 286.374 286.374;" xml:space="preserve" width="16px" height="16px">
+                <g id="Mix_playlist">
+                    <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M157.507,121.709c7.074-11.495,15.899-14.318,30.428-14.318h35.796v26.847   l62.643-48.326l-62.643-50.115v26.848h-35.796c-11.215,0-23.689,3.999-33.504,7.913c-17.898,7.119-29.281,19.368-36.902,36.832   c-4.097,9.397-4.95,30.988-10.851,42.957c-8.837,17.898-20.556,28.636-35.084,28.636H0l0.001,44.747h71.593   c6.74,0,21.897-4,31.713-7.915c17.898-7.117,29.743-19.227,42.398-46.843C151.089,157.212,153.926,127.526,157.507,121.709z    M99.043,123.428c0.041-0.238,0.084-0.475,0.126-0.699c1.398-7.887,2.74-15.34,5.229-21.073   c3.803-8.725,8.696-15.968,14.235-22.429c-4.67-3.579-9.676-6.418-15.327-8.67c-9.816-3.914-20.498-7.913-31.713-7.913H0.001   L0,107.389h71.594C82.277,107.389,91.422,113.235,99.043,123.428z M223.731,178.984l-37.587-0.001   c-12.25,0-19.129-2.349-25.24-9.871c-0.671,2.084-1.384,4.083-2.181,5.831c-6.195,13.507-12.473,23.883-19.48,32.162   c4.516,3.369,9.398,6.418,15.186,8.711c9.816,3.915,22.289,7.915,33.504,7.915h35.796v26.847l62.643-50.116l-62.643-48.325V178.984   z" fill="#FFFFFF"/>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                </svg>
+              </a>
+                {% endfor %}
+                {% endblock %}
+{% block meta_data %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="csrf-token" content="">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Ajarani,ajar,Ajar">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Ajarani,ajar,Ajar">
+        <meta name="msapplication-TileImage" content="{{data.image}}">
+        <meta name="msapplication-TileColor" content="#171717">
+        <meta name="theme-color" content="#171717">
+        <meta name="description" content="{{data.about}}">
+        <meta name="robots" content="index, follow">
+        <meta property="og:url" content="{% url 'anime_info' id_anime=data.id %}">
+        <meta property="og:title" content="{{data.name}}-Ajarani">
+        <meta property="og:description" content="{{data.about}}">
+        <meta property="og:site_name" content="Ajarani">
+        <meta property="og:type" content="video.{{data.types}}">
+        <meta property="og:image" content="{{data.image}}-w650-h350">
+        <meta property="og:image:alt" content="{{data.name}}">
+        <meta property="og:image:width" content="650">
+        <meta property="og:image:height" content="350">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta http-equiv="content-language" content="en">
+        <meta property="video:duration" content="{{data.durination}}" >
+        <meta property="video:release_date" content="{{data.aired}}" >
+        <meta property="video:tag " content="{{data.tags}}" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+{% endblock %}
+ {% block main_content %}
+        <main class="mdl-layout__content">
+          <div class="page-content">
+            <div class="mdl-grid info_grid">
+                <div class="mdl-cell mdl-cell--12-col info_header_holder">
+                    {% if data.cover == '\'' %}
+                      <img class="info_back_img " src="{{data.image}}" alt="">
+                    {% else %}
+                      <img class="info_back_img " src="{{data.image}}" alt="">
+                    {% endif %}
+                    <div class="info_head_overlay mdl-grid">
+                        <div  id="centerside" class="mdl-card mdl-shadow--8dp mdl-cell mdl-cell--6-col info_trailer_holder">
+                             {% if data.cover == '\'' %}
+                                <img src="{{data.image}}" class="info_triler_img " id="img" width="100" height="100">
+                            {% else %}
+                                <img src="{{data.image}}" class="info_triler_img " id="img" width="100" height="100">
+                            {% endif %}
+                                   <!--<i id="btn" width="60" height="60" id="playButton" onclick=playVideo() class="material-icons">play_circle_filled</i>-->
+                                   <!--<h6 class="trailer_text">watch trailer</h6>-->
+                                    <!--<div id="showVideoDiv" style="display:none;">-->
+                                          <!--<iframe width="100%" height="100%"  id="trailer" src="https://www.youtube.com/embed/Pmva62F9dRY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                                    <!--</div>-->
+                        </div>
+                        <div class="mdl-cell mdl-cell--2-col info_name_holder">
+                            <h1 class="info_name" >{{data.name}}</h1>
+                            <small class="info_synonyms">{{data.synonyms}}</small>
+                            <div class="info_gener_holder">
+                                <a href="" class="mdl-button mdl-js-button mdl-js-ripple-effect info_gener">{{data.gener}}</a>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-grid info_rating_grid">
+            </div>
+            <div class="mdl-grid info_about_holder">
+                <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-phone info_about_info">
+                  <div class="info_about_item_holder"> 
+                    <img  class="info_about_item_image" src="{{data.image}}" alt="{{data.name}}">
+                    <div class="info_about_item" >type: <span>{{data.types}}</span> </div>
+                    <div class="info_about_item" >studios: <span>{{data.studios}}</span> </div>
+                    <div class="info_about_item" >date aired: <span>{{data.aired}}</span> </div>
+                    <div class="info_about_item" >status: <span>{{data.status}}</span> </div>
+                    <div class="info_about_item" >rating: <span>{{data.scores}}</span> </div>
+                    <div class="info_about_item" >premiered: <span> {{data.premired}}</span> </div>
+                    <div class="info_about_item" >durination: <span>{{data.durination}}</span> </div>
+                    <div class="info_about_item" >quality: <span> {{data.quality}}</span> </div>
+                    <div class="info_about_item" >views: <span>178,125</span> </div>
+                </div> 
+                </div>
+                    <div class="mdl-cell mdl-cell--8-col  mdl-cell--12-col-tablet mdl-cell--12-col-phone info_about">
+                                    <p class="hide" id="scroll_bar">
+                                        {{data.about}}
+                                      </p>
+                                        <a id="toggle" class="toggle_button"> Read </a>
+                                        <div class="mdl-tooltip mdl-tooltip--top" for="toggle">
+                                          Toggle this to read more about the Anime
+                                        </div>
+                    </div>
+            </div>
+            <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col grid-top-text">
+                        <button class="mdl-button mdl-js-button">
+                            EPISODES
+                          </button>
+                    </div>
+                {% for episode in episode_data %}
+                 <div class="mdl-cell mdl-cell--12-col   mdl-cell--12-col-phone info_episode_holder" >
+                       <a href="{% url 'anime_play'  episode_id=episode.id  id_anime=data.id%}"> <div class="mdl-cell mdl-cell--12-col   mdl-cell--12-col-phone " id="info_episode_name" >
+                            {{episode.episode}}
+                        </div>
+                        </a>
+                        <a href="{% url 'anime_play'  episode_id=episode.id  id_anime=data.id%}">   <button class="mdl-button mdl-js-button mdl-js-ripple-effect info_episode_buttons" >
+                            watch
+                     </button>
+                     </a>
+                     <a href="{{episode.download_url}}" target="_blank">  <button  class=" mdl-button mdl-js-button mdl-js-ripple-effect info_episode_buttons" >
+                            download
+                     </button>
+                     </a>
+                   </div>
+                {% endfor %}
+    <!-- navigation -->
+            <div class="tab_nav">
+                <!--pagination-->
+                    <div>
+                        <div id="page-container">
+                            <span class="step-links">
+                                {% if episode_data.has_previous %}
+                                    <a id="first-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page=1"><i class="material-icons">first_page</i></a>
+                                    <a id="prev-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ episode_data.previous_page_number }}"><i class="material-icons">chevron_left</i></a>
+                                {% endif %}
+                                 {% if episode_data.has_next %}
+                                    <span class="current">
+                                        Page {{ episode_data.number }} of {{ episode_data.paginator.num_pages }}.
+                                    </span>
+                                {% endif %}
+                                {% if episode_data.has_next %}
+                                    <a id="next-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ episode_data.next_page_number }}"><i class="material-icons">chevron_right</i></a>
+                                    <a  id="last-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ episode_data.paginator.num_pages }}"><i class="material-icons">last_page</i></a>
+                                {% endif %}
+                            </span>
+                     </div>
+                    </div>
+                        <!--tooltips-->
+                        <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="first-page-tooltip">First Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="prev-page-tooltip"> Previous Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="next-page-tooltip"> Next Page</div>
+                        <div class="mdl-tooltip mdl-tooltip--right" data-mdl-for="last-page-tooltip"> Last Page</div>
+                        <!--end-->
+    </div>
+<!--endpagination-->
+            </div>                
+             </div>
+             <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col grid-top-text">
+                        <button class="mdl-button mdl-js-button">
+                                RECOMMENDATIONS
+                          </button>
+                    </div>
+                  {% for recom in recom %}
+                    <div class="mdl-cell mdl-cell--3-col   mdl-cell--12-col-phone" >
+                          <div class="thumbnail-holder">
+
+                            <img src="{{recom.image}}" alt="">
+
+                            <div class="small_poster_space">
+                              <img src="{{recom.image}}" alt="">
+                            </div>
+                            <a href="{% url 'anime_info'   id_anime=recom.id %}"><div class="overlay-layer">
+                              <h6 class="release_time" >{{recom.durination}}</h6>
+                            </div></a>
+                          </div>
+                        <a href="{% url 'anime_info'   id_anime=recom.id %}" class="">
+                            <div class="supporting-text">
+                                {{recom.name}}
+                            </div>
+                        </a>
+                   </div>
+                  {% endfor %}
+             </div>
+            {% endblock %}
+

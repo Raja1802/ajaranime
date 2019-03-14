@@ -1,0 +1,189 @@
+{% extends 'home/index.html' %}
+{% block title %} Ajarani |  {{episode.episode}} {% endblock %}
+{% block meta_data %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="csrf-token" content="">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Ajarani,ajar,Ajar">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Ajarani,ajar,Ajar">
+        <meta name="msapplication-TileImage" content="{{anime_info.image}}">
+        <meta name="msapplication-TileColor" content="#171717">
+        <meta name="theme-color" content="#171717">
+        <meta name="description" content="{{anime_info.about}}">
+        <meta name="robots" content="index, follow">
+        <meta property="og:url" content="{% url 'anime_play'  episode_id=episode.id id_anime=episode.anime_id %}">
+        <meta property="og:title" content="{{episode.episode}}-Ajarani">
+        <meta property="og:description" content="{{anime_info.about}}">
+        <meta property="og:site_name" content="Ajarani">
+        <meta property="og:type" content="video.{{anime_info.types}}">
+        <meta property="og:image" content="{{anime_info.image}}-w650-h350">
+        <meta property="og:image:alt" content="{{episode.episode}}">
+        <meta property="og:image:width" content="650">
+        <meta property="og:image:height" content="350">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta http-equiv="content-language" content="en">
+        <meta property="video:duration" content="{{anime_info.durination}}" >
+        <meta property="video:release_date" content="{{anime_info.aired}}" >
+        <meta property="video:tag " content="{{anime_info.tags}}" >
+        <meta property="video:series " content="{{anime_info.name}}" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+{% endblock %}
+
+ {% block main_content %}
+        <main class="mdl-layout__content">
+          <div class="page-content">
+            <div class="mdl-grid play_grid">
+                        <div class="mdl-cell mdl-cell--12-col anime_master_header play_select_header_holder">
+                                <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+                                    <div class="filter-item mdl-cell mdl-cell--12-col anime_master_header play_select_header_holder">
+                                                                    <button id="menu-lower-0"class="filter-button mdl-button mdl-js-button ">
+                                                                             choose a server <i class="material-icons">&#xe5c5;</i>
+                                                                    </button>
+                                                                    <div class="mdl-tooltip" for="menu-lower-0">choose a server</div>
+                                                            <ul class="filter-menu-container mdl-menu mdl-js-menu mdl-js-ripple-effect"
+                                                                for="menu-lower-0">
+                                                                {% if episode.server_1 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_1" href="{{episode.server_1}}"><li class="filter-menu-item mdl-menu__item"> server 1</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_2 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                <a id="server_2" href="{{episode.server_2}}"><li class="filter-menu-item mdl-menu__item"> server 2</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_3 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_3" href="{{episode.server_3}}"><li class="filter-menu-item mdl-menu__item"> server 3</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_4 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_4" href="{{episode.server_4}}"><li class="filter-menu-item mdl-menu__item"> server 4</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_5 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_5" href="{{episode.server_5}}"><li class="filter-menu-item mdl-menu__item"> server 5</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_6 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_6" href="{{episode.server_6}}"><li class="filter-menu-item mdl-menu__item"> server 6</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_7 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_7" href="{{episode.server_7}}"><li class="filter-menu-item mdl-menu__item"> server 7</li></a>
+                                                                 {% endif %}
+                                                                 {% if episode.server_8 == '' %}
+                                                                <li></li>
+                                                                {% else %}
+                                                                 <a id="server_8" href="{{episode.server_8}}"><li class="filter-menu-item mdl-menu__item"> server 8</li></a>
+                                                                 {% endif %}
+                                                             </ul>
+                                                    </div>
+
+                                </div>
+
+                       </div>
+                       <div class="mdl-cell mdl-cell--12-col  play_player_holder ">
+                          <iframe id="iframe" src="{{episode.server_1}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                       </div>
+                       <div class="mdl-cell mdl-cell--8-col  play_player_small_holder">
+                            <div class="mdl-cell mdl-cell--2-col  play_player_small_img">
+                                <img src="{{anime_info.image}}" alt="">
+                             </div>
+                                  <a href="{% url 'anime_info' id_anime=anime_info.id%}" class="play_player_name" >{{episode.episode}}</a>
+                           <br>
+                       </div>
+                 <div class="mdl-cell mdl-cell--12-col grid-top-text">
+                        <button class="mdl-button mdl-js-button">
+                            Episodes list
+                          </button>
+                        </div>
+                 <div class="mdl-cell mdl-cell--12-col  mdl-cell--12-col-tablet mdl-cell--12-col-phone " id="play_episode_list_holder">
+                     {% for episode in episode_data %}
+                        <div class="mdl-cell mdl-cell--12-col   mdl-cell--12-col-phone info_episode_holder" >
+                            <a href="{% url 'anime_play'  episode_id=episode.id id_anime=episode.anime_id %}">
+                              <div class="mdl-cell mdl-cell--12-col   mdl-cell--12-col-phone " id="info_episode_name" >
+                                 {{episode.episode}}
+                             </div>
+                             </a>
+                          <a href="{{episode.download_url}}" target="_blank">
+                              <button class="info_episode_buttons mdl-button mdl-js-button mdl-js-ripple-effect" >
+                                 download
+                              </button>
+                          </a>
+                     </div>
+                     {% endfor %}
+                         <!-- navigation -->
+            <div class="tab_nav">
+                <!--pagination-->
+                    <div>
+                        <div id="page-container">
+                            <span class="step-links">
+                                {% if episode_data.has_previous %}
+                                    <a id="first-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page=1"><i class="material-icons">first_page</i></a>
+                                    <a id="prev-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ episode_data.previous_page_number }}"><i class="material-icons">chevron_left</i></a>
+                                {% endif %}
+                                 {% if episode_data.has_next %}
+                                    <span class="current">
+                                        Page list {{ episode_data.number }} of {{ episode_data.paginator.num_pages }}.
+                                    </span>
+                                {% endif %}
+                                {% if episode_data.has_next %}
+                                    <a id="next-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ episode_data.next_page_number }}"><i class="material-icons">chevron_right</i></a>
+                                    <a  id="last-page-tooltip" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect page-buttons" href="?page={{ episode_data.paginator.num_pages }}"><i class="material-icons">last_page</i></a>
+                                {% endif %}
+                            </span>
+                     </div>
+                    </div>
+                        <!--tooltips-->
+                        <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="first-page-tooltip">First episode</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="prev-page-tooltip"> Previous episode</div>
+                        <div class="mdl-tooltip mdl-tooltip--top" data-mdl-for="next-page-tooltip"> Next episode</div>
+                        <div class="mdl-tooltip mdl-tooltip--right" data-mdl-for="last-page-tooltip"> Last episode</div>
+                        <!--end-->
+    </div>
+<!--endpagination-->
+                 </div>
+
+
+            </div>
+             <!-- Flickity HTML init -->
+              <div>
+             <div class="carousel_top_text">
+                    <!-- Flat button with ripple -->
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect carousel_top_text_main">
+                            try them
+                          </button>
+                          <a href="{% url 'anime:anime_list' %}">
+                              <button class="mdl-button mdl-js-button mdl-js-ripple-effect carousel_top_text_more">
+                                  more
+                                </button>
+                          </a>
+
+                         </div>
+                  <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true, "pageDots": false, "autoPlay": 2000 }'>
+                   {% for random in random %}
+                    <a href="{% url 'anime_info'   id_anime=random.id %}">
+                      <div class="carousel-cell">
+                      <img src="{{random.image}}" alt="">
+                      <div class="carousel_overlay">
+                        <h6 class="carousel_overlay_text">{{random.name}}</h6>
+                      </div>
+                    </div>
+                  </a>
+              {% endfor %}
+                   </div>
+           </div>
+                  {% endblock %}
+              <!--block ended before a level of div and main-->
+          <!--</div>-->
+        <!--</main>-->
+
